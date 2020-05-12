@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
+Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "tabctl32.ocx"
 Begin VB.Form frmDDFeAPI 
    BorderStyle     =   1  'Fixed Single
    Caption         =   "DDF-e API"
@@ -48,15 +48,15 @@ Begin VB.Form frmDDFeAPI
       Tab(0).Control(9).Enabled=   0   'False
       Tab(0).Control(10)=   "cbTpEventoManif"
       Tab(0).Control(10).Enabled=   0   'False
-      Tab(0).Control(11)=   "txtCaminhoManif(0)"
+      Tab(0).Control(11)=   "cbTpAmbManif"
       Tab(0).Control(11).Enabled=   0   'False
-      Tab(0).Control(12)=   "cbTpAmbManif"
+      Tab(0).Control(12)=   "txtNumDocManif"
       Tab(0).Control(12).Enabled=   0   'False
-      Tab(0).Control(13)=   "txtNumDocManif"
+      Tab(0).Control(13)=   "cbTpDocManif"
       Tab(0).Control(13).Enabled=   0   'False
-      Tab(0).Control(14)=   "cbTpDocManif"
+      Tab(0).Control(14)=   "txtXJustManif"
       Tab(0).Control(14).Enabled=   0   'False
-      Tab(0).Control(15)=   "txtXJustManif"
+      Tab(0).Control(15)=   "txtCaminhoManif"
       Tab(0).Control(15).Enabled=   0   'False
       Tab(0).ControlCount=   16
       TabCaption(1)   =   "Download Único"
@@ -139,11 +139,19 @@ Begin VB.Form frmDDFeAPI
       Tab(2).Control(18)=   "chkRetornoSimples"
       Tab(2).Control(18).Enabled=   0   'False
       Tab(2).ControlCount=   19
+      Begin VB.TextBox txtCaminhoManif 
+         Height          =   345
+         Left            =   -74340
+         TabIndex        =   52
+         Text            =   "C:\Notas\"
+         Top             =   4860
+         Width           =   9255
+      End
       Begin VB.CheckBox chkRetornoSimples 
          Caption         =   "Retorno somente chaves baixadas"
          Height          =   255
          Left            =   3840
-         TabIndex        =   52
+         TabIndex        =   51
          Top             =   2160
          Width           =   2775
       End
@@ -151,7 +159,7 @@ Begin VB.Form frmDDFeAPI
          Caption         =   "Carregar apenas docs pendentes"
          Height          =   255
          Left            =   7320
-         TabIndex        =   49
+         TabIndex        =   48
          Top             =   2160
          Width           =   2655
       End
@@ -159,7 +167,7 @@ Begin VB.Form frmDDFeAPI
          Caption         =   "Incluir XMLs dos eventos"
          Height          =   255
          Left            =   840
-         TabIndex        =   46
+         TabIndex        =   45
          Top             =   2760
          Width           =   2175
       End
@@ -167,7 +175,7 @@ Begin VB.Form frmDDFeAPI
          Caption         =   "Apenas XMLs autorizados"
          Height          =   255
          Left            =   7680
-         TabIndex        =   45
+         TabIndex        =   44
          Top             =   2760
          Width           =   2175
       End
@@ -175,14 +183,14 @@ Begin VB.Form frmDDFeAPI
          Caption         =   "Incluir PDF das Notas"
          Height          =   255
          Left            =   840
-         TabIndex        =   44
+         TabIndex        =   43
          Top             =   2160
          Width           =   1935
       End
       Begin VB.TextBox txtUltNSULote 
          Height          =   285
          Left            =   7200
-         TabIndex        =   43
+         TabIndex        =   42
          Text            =   "0"
          Top             =   1320
          Width           =   2775
@@ -192,7 +200,7 @@ Begin VB.Form frmDDFeAPI
          ItemData        =   "frmDDFeAPI.frx":0054
          Left            =   6120
          List            =   "frmDDFeAPI.frx":0061
-         TabIndex        =   42
+         TabIndex        =   41
          Text            =   "55"
          Top             =   1320
          Width           =   615
@@ -200,7 +208,7 @@ Begin VB.Form frmDDFeAPI
       Begin VB.ComboBox cbTpAmbLote 
          Height          =   315
          Left            =   4440
-         TabIndex        =   40
+         TabIndex        =   39
          Text            =   "2"
          Top             =   1320
          Width           =   1335
@@ -208,14 +216,14 @@ Begin VB.Form frmDDFeAPI
       Begin VB.TextBox txtCNPJIntLote 
          Height          =   285
          Left            =   840
-         TabIndex        =   38
+         TabIndex        =   37
          Top             =   1320
          Width           =   3135
       End
       Begin VB.TextBox txtCaminhoLote 
          Height          =   285
          Left            =   960
-         TabIndex        =   36
+         TabIndex        =   35
          Text            =   "C:\Notas\"
          Top             =   4800
          Width           =   9135
@@ -224,7 +232,7 @@ Begin VB.Form frmDDFeAPI
          Caption         =   "Enviar Documento para Processamento >>>>>>"
          Height          =   375
          Left            =   360
-         TabIndex        =   35
+         TabIndex        =   34
          Top             =   5520
          Width           =   10215
       End
@@ -233,14 +241,14 @@ Begin VB.Form frmDDFeAPI
          Left            =   360
          MultiLine       =   -1  'True
          ScrollBars      =   2  'Vertical
-         TabIndex        =   34
+         TabIndex        =   33
          Top             =   6600
          Width           =   10215
       End
       Begin VB.TextBox txtCaminhoUniq 
          Height          =   285
          Left            =   -74280
-         TabIndex        =   33
+         TabIndex        =   32
          Text            =   "C:\Notas\"
          Top             =   4800
          Width           =   9135
@@ -249,7 +257,7 @@ Begin VB.Form frmDDFeAPI
          Caption         =   "Incluir PDF das Notas"
          Height          =   255
          Left            =   -74280
-         TabIndex        =   31
+         TabIndex        =   30
          Top             =   1920
          Width           =   1935
       End
@@ -257,7 +265,7 @@ Begin VB.Form frmDDFeAPI
          Caption         =   "Incluir XMLs dos eventos"
          Height          =   255
          Left            =   -68400
-         TabIndex        =   30
+         TabIndex        =   29
          Top             =   3600
          Width           =   2175
       End
@@ -265,7 +273,7 @@ Begin VB.Form frmDDFeAPI
          Caption         =   "Apenas XMLs autorizados"
          Height          =   255
          Left            =   -73080
-         TabIndex        =   29
+         TabIndex        =   28
          Top             =   3600
          Width           =   2175
       End
@@ -274,7 +282,7 @@ Begin VB.Form frmDDFeAPI
          ItemData        =   "frmDDFeAPI.frx":0071
          Left            =   -69120
          List            =   "frmDDFeAPI.frx":007E
-         TabIndex        =   28
+         TabIndex        =   27
          Text            =   "55"
          Top             =   1440
          Width           =   615
@@ -282,7 +290,7 @@ Begin VB.Form frmDDFeAPI
       Begin VB.ComboBox cbTpAmbUniq 
          Height          =   315
          Left            =   -70920
-         TabIndex        =   27
+         TabIndex        =   26
          Text            =   "2"
          Top             =   1440
          Width           =   1335
@@ -292,7 +300,7 @@ Begin VB.Form frmDDFeAPI
          ItemData        =   "frmDDFeAPI.frx":008E
          Left            =   -67920
          List            =   "frmDDFeAPI.frx":0098
-         TabIndex        =   26
+         TabIndex        =   25
          Text            =   "nsu"
          Top             =   1080
          Width           =   975
@@ -300,14 +308,14 @@ Begin VB.Form frmDDFeAPI
       Begin VB.TextBox txtCNPJIntUniq 
          Height          =   285
          Left            =   -74280
-         TabIndex        =   25
+         TabIndex        =   24
          Top             =   1440
          Width           =   3135
       End
       Begin VB.TextBox txtNumDocUniq 
          Height          =   285
          Left            =   -67920
-         TabIndex        =   24
+         TabIndex        =   23
          Top             =   1440
          Width           =   2775
       End
@@ -316,14 +324,14 @@ Begin VB.Form frmDDFeAPI
          Left            =   -74760
          MultiLine       =   -1  'True
          ScrollBars      =   2  'Vertical
-         TabIndex        =   18
+         TabIndex        =   17
          Top             =   6480
          Width           =   10215
       End
       Begin VB.TextBox txtXJustManif 
          Height          =   1095
          Left            =   -67920
-         TabIndex        =   17
+         TabIndex        =   16
          Top             =   2880
          Width           =   2775
       End
@@ -332,7 +340,7 @@ Begin VB.Form frmDDFeAPI
          ItemData        =   "frmDDFeAPI.frx":00A8
          Left            =   -68520
          List            =   "frmDDFeAPI.frx":00B2
-         TabIndex        =   14
+         TabIndex        =   13
          Text            =   "nsu"
          Top             =   960
          Width           =   975
@@ -340,7 +348,7 @@ Begin VB.Form frmDDFeAPI
       Begin VB.TextBox txtNumDocManif 
          Height          =   375
          Left            =   -68520
-         TabIndex        =   13
+         TabIndex        =   12
          Top             =   1320
          Width           =   3375
       End
@@ -349,19 +357,10 @@ Begin VB.Form frmDDFeAPI
          ItemData        =   "frmDDFeAPI.frx":00C2
          Left            =   -74280
          List            =   "frmDDFeAPI.frx":00C4
-         TabIndex        =   12
+         TabIndex        =   11
          Text            =   "2"
          Top             =   2520
          Width           =   3735
-      End
-      Begin VB.TextBox txtCaminhoManif 
-         Height          =   315
-         Index           =   0
-         Left            =   -74280
-         TabIndex        =   6
-         Text            =   "C:\Notas\"
-         Top             =   4920
-         Width           =   9135
       End
       Begin VB.ComboBox cbTpEventoManif 
          Height          =   315
@@ -409,7 +408,7 @@ Begin VB.Form frmDDFeAPI
          Caption         =   "Salvar em:"
          Height          =   255
          Left            =   5040
-         TabIndex        =   51
+         TabIndex        =   50
          Top             =   4440
          Width           =   855
       End
@@ -417,7 +416,7 @@ Begin VB.Form frmDDFeAPI
          Caption         =   "Ultimo NSU"
          Height          =   255
          Left            =   7200
-         TabIndex        =   50
+         TabIndex        =   49
          Top             =   960
          Width           =   1095
       End
@@ -425,7 +424,7 @@ Begin VB.Form frmDDFeAPI
          Caption         =   "0"
          Height          =   255
          Left            =   6120
-         TabIndex        =   48
+         TabIndex        =   47
          Top             =   3600
          Width           =   735
       End
@@ -433,7 +432,7 @@ Begin VB.Form frmDDFeAPI
          Caption         =   "Numero do ultimo NSU baixado:"
          Height          =   255
          Left            =   3720
-         TabIndex        =   47
+         TabIndex        =   46
          Top             =   3600
          Width           =   2295
       End
@@ -441,7 +440,7 @@ Begin VB.Form frmDDFeAPI
          Caption         =   "Modelo"
          Height          =   255
          Left            =   6120
-         TabIndex        =   41
+         TabIndex        =   40
          Top             =   960
          Width           =   735
       End
@@ -449,7 +448,7 @@ Begin VB.Form frmDDFeAPI
          Caption         =   "Tipo de Ambiente"
          Height          =   255
          Left            =   4440
-         TabIndex        =   39
+         TabIndex        =   38
          Top             =   960
          Width           =   1335
       End
@@ -457,7 +456,7 @@ Begin VB.Form frmDDFeAPI
          Caption         =   "CNPJ Interessado"
          Height          =   255
          Left            =   960
-         TabIndex        =   37
+         TabIndex        =   36
          Top             =   960
          Width           =   1335
       End
@@ -465,7 +464,7 @@ Begin VB.Form frmDDFeAPI
          Caption         =   "Se selecionar chave ao inves de NSU, você pode utilizar as seguintes funções::"
          Height          =   255
          Left            =   -72480
-         TabIndex        =   32
+         TabIndex        =   31
          Top             =   3120
          Width           =   5775
       End
@@ -473,7 +472,7 @@ Begin VB.Form frmDDFeAPI
          Caption         =   "Resposta do Servidor"
          Height          =   255
          Left            =   -74760
-         TabIndex        =   23
+         TabIndex        =   22
          Top             =   6240
          Width           =   1575
       End
@@ -481,7 +480,7 @@ Begin VB.Form frmDDFeAPI
          Caption         =   "Modelo"
          Height          =   255
          Left            =   -69000
-         TabIndex        =   22
+         TabIndex        =   21
          Top             =   1080
          Width           =   735
       End
@@ -489,7 +488,7 @@ Begin VB.Form frmDDFeAPI
          Caption         =   "Salvar em:"
          Height          =   255
          Left            =   -70080
-         TabIndex        =   21
+         TabIndex        =   20
          Top             =   4440
          Width           =   855
       End
@@ -497,7 +496,7 @@ Begin VB.Form frmDDFeAPI
          Caption         =   "Tipo de Ambiente"
          Height          =   255
          Left            =   -70920
-         TabIndex        =   20
+         TabIndex        =   19
          Top             =   1080
          Width           =   1455
       End
@@ -505,7 +504,7 @@ Begin VB.Form frmDDFeAPI
          Caption         =   "CNPJ Interessado"
          Height          =   255
          Left            =   -74280
-         TabIndex        =   19
+         TabIndex        =   18
          Top             =   1080
          Width           =   1335
       End
@@ -513,7 +512,7 @@ Begin VB.Form frmDDFeAPI
          Caption         =   "Justificação:"
          Height          =   255
          Left            =   -68880
-         TabIndex        =   16
+         TabIndex        =   15
          Top             =   2880
          Width           =   975
       End
@@ -521,7 +520,7 @@ Begin VB.Form frmDDFeAPI
          Caption         =   "Informar o xJust somente quando evento for 210240"
          Height          =   255
          Left            =   -68880
-         TabIndex        =   15
+         TabIndex        =   14
          Top             =   2280
          Width           =   3735
       End
@@ -530,7 +529,7 @@ Begin VB.Form frmDDFeAPI
          Caption         =   "Salvar em:"
          Height          =   195
          Left            =   -70320
-         TabIndex        =   11
+         TabIndex        =   10
          Top             =   4560
          Width           =   750
       End
@@ -539,7 +538,7 @@ Begin VB.Form frmDDFeAPI
          Caption         =   "Tipo de Ambiente:"
          Height          =   195
          Left            =   -74280
-         TabIndex        =   10
+         TabIndex        =   9
          Top             =   2160
          Width           =   1290
       End
@@ -547,7 +546,7 @@ Begin VB.Form frmDDFeAPI
          Caption         =   "Tipo de Download:"
          Height          =   255
          Left            =   -74280
-         TabIndex        =   9
+         TabIndex        =   8
          Top             =   3240
          Width           =   1455
       End
@@ -556,7 +555,7 @@ Begin VB.Form frmDDFeAPI
          Caption         =   "Resposta do Servidor"
          Height          =   195
          Left            =   -74760
-         TabIndex        =   8
+         TabIndex        =   7
          Top             =   6240
          Visible         =   0   'False
          Width           =   1530
@@ -566,7 +565,7 @@ Begin VB.Form frmDDFeAPI
          Caption         =   "CNPJ Interessado"
          Height          =   195
          Left            =   -74280
-         TabIndex        =   7
+         TabIndex        =   6
          Top             =   1080
          Width           =   1275
       End
@@ -644,6 +643,7 @@ Private Sub Form_Load()
     cbTpAmbManif.List(1) = 1
     cbTpAmbUniq.List(0) = 2
     cbTpAmbUniq.List(1) = 1
-    'cbTpAmbLote.List(0) = 2
-    'cbTpAmbLote.List(1) = 1
+    cbTpAmbLote.List(0) = 2
+    cbTpAmbLote.List(1) = 1
 End Sub
+
