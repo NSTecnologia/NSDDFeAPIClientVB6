@@ -272,6 +272,7 @@ Public Function tratamentoDownloadLote(caminho As String, modelo As String, incl
     Dim json As String
     Dim ultNSU As String
     Dim indice As Integer
+    Dim consNSU As String
     
     status = LerDadosJSON(jsonRetorno, "status", "", "")
     
@@ -304,6 +305,10 @@ Public Function tratamentoDownloadLote(caminho As String, modelo As String, incl
         ultNSU = LerDadosJSON(jsonRetorno, "ultNSU", "", "")
         
         frmDDFeAPI.lbUltNSU.Caption = ultNSU
+        
+        
+        
+        
         json = "{"
         json = json & """status"":""" & status & ""","
         json = json & """ultNSU"":""" & ultNSU & ""","
@@ -319,6 +324,8 @@ Public Function tratamentoDownloadLote(caminho As String, modelo As String, incl
         Next
         
         json = json & "]}"
+        
+        frmDDFeAPI.lbConsNSU.Caption = ultNSUConsulta
         
         MsgBox ("Download em Lote feito com Sucesso!")
         tratamentoDownloadLote = json

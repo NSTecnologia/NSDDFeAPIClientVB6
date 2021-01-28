@@ -13,11 +13,11 @@ Begin VB.Form frmDDFeAPI
    ScaleWidth      =   10845
    Begin VB.PictureBox SSTab1 
       Height          =   9735
-      Left            =   0
+      Left            =   30
       ScaleHeight     =   9675
       ScaleWidth      =   10755
       TabIndex        =   0
-      Top             =   0
+      Top             =   15
       Width           =   10815
       Begin VB.TextBox txtCaminhoManif 
          Height          =   345
@@ -97,7 +97,6 @@ Begin VB.Form frmDDFeAPI
          Height          =   285
          Left            =   840
          TabIndex        =   37
-         Text            =   "12378462000126"
          Top             =   1320
          Width           =   3135
       End
@@ -285,6 +284,30 @@ Begin VB.Form frmDDFeAPI
          Top             =   1320
          Width           =   3735
       End
+      Begin VB.Label lbConsNSU 
+         Caption         =   "0"
+         Height          =   315
+         Left            =   5055
+         TabIndex        =   55
+         Top             =   3870
+         Width           =   1290
+      End
+      Begin VB.Label Label21 
+         Caption         =   "Ultimo NSU baixado:"
+         Height          =   270
+         Left            =   3345
+         TabIndex        =   54
+         Top             =   3855
+         Width           =   2400
+      End
+      Begin VB.Label Label20 
+         Caption         =   "Numero do ultimo NSU Disponivel:"
+         Height          =   255
+         Left            =   0
+         TabIndex        =   53
+         Top             =   0
+         Width           =   2775
+      End
       Begin VB.Label Label19 
          Caption         =   "Salvar em:"
          Height          =   255
@@ -310,12 +333,12 @@ Begin VB.Form frmDDFeAPI
          Width           =   735
       End
       Begin VB.Label Label17 
-         Caption         =   "Numero do ultimo NSU Disponivel:"
+         Caption         =   "Numero do último NSU disponivel:"
          Height          =   255
-         Left            =   3720
+         Left            =   3345
          TabIndex        =   46
          Top             =   3600
-         Width           =   2295
+         Width           =   2775
       End
       Begin VB.Label Label16 
          Caption         =   "Modelo"
