@@ -6,7 +6,7 @@ Public Declare Function ShellExecute Lib "shell32.dll" Alias "ShellExecuteA" (By
 'Atributo privado da classe
 Private Const tempoResposta = 500
 Private Const impressaoParam = """impressao"":{" & """tipo"":""pdf""," & """ecologica"":false," & """itemLinhas"":""1""," & """itemDesconto"":false," & """larguraPapel"":""80mm""}"
-Private Const token = "SEU_TOKEN"
+Private Const token = "SEU_TOKEN_AQUI"
 Private ultNSUConsulta As String
 
 'Esta fun���o envia um conte�do para uma URL, em requisi��es do tipo POST
@@ -274,10 +274,10 @@ Public Function tratamentoDownloadLote(caminho As String, modelo As String, incl
     Dim indice As Integer
     
     status = LerDadosJSON(jsonRetorno, "status", "", "")
-
+    
     If (status = "200") Then
         chRet() = salvarDocsLote(caminho, modelo, incluirPdf, jsonRetorno)
-
+        
         If (apenasComXml <> True) Then
             'Verifica se existe alguma chave em branco
             indice = 0
@@ -286,7 +286,7 @@ Public Function tratamentoDownloadLote(caminho As String, modelo As String, incl
                     indice = indice + 1
                 End If
             Next
-            
+
             ReDim chaves(indice)
             
             'Preenche o novo array de chaves
@@ -302,7 +302,7 @@ Public Function tratamentoDownloadLote(caminho As String, modelo As String, incl
         End If
 
         ultNSU = LerDadosJSON(jsonRetorno, "ultNSU", "", "")
-
+        
         frmDDFeAPI.lbUltNSU.Caption = ultNSU
         json = "{"
         json = json & """status"":""" & status & ""","

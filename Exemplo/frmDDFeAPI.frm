@@ -1,144 +1,24 @@
 VERSION 5.00
-Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "tabctl32.ocx"
 Begin VB.Form frmDDFeAPI 
    BorderStyle     =   1  'Fixed Single
    Caption         =   "DDF-e API"
    ClientHeight    =   9735
-   ClientLeft      =   6810
-   ClientTop       =   990
+   ClientLeft      =   765
+   ClientTop       =   -330
    ClientWidth     =   10845
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MinButton       =   0   'False
    ScaleHeight     =   9735
    ScaleWidth      =   10845
-   Begin TabDlg.SSTab SSTab1 
+   Begin VB.PictureBox SSTab1 
       Height          =   9735
       Left            =   0
+      ScaleHeight     =   9675
+      ScaleWidth      =   10755
       TabIndex        =   0
       Top             =   0
       Width           =   10815
-      _ExtentX        =   19076
-      _ExtentY        =   17171
-      _Version        =   393216
-      Tab             =   2
-      TabHeight       =   520
-      TabCaption(0)   =   "Manisfestação"
-      TabPicture(0)   =   "frmDDFeAPI.frx":0000
-      Tab(0).ControlEnabled=   0   'False
-      Tab(0).Control(0)=   "Label2"
-      Tab(0).Control(0).Enabled=   0   'False
-      Tab(0).Control(1)=   "Label3"
-      Tab(0).Control(1).Enabled=   0   'False
-      Tab(0).Control(2)=   "Label13"
-      Tab(0).Control(2).Enabled=   0   'False
-      Tab(0).Control(3)=   "Label5"
-      Tab(0).Control(3).Enabled=   0   'False
-      Tab(0).Control(4)=   "Label1"
-      Tab(0).Control(4).Enabled=   0   'False
-      Tab(0).Control(5)=   "Label4"
-      Tab(0).Control(5).Enabled=   0   'False
-      Tab(0).Control(6)=   "Label6"
-      Tab(0).Control(6).Enabled=   0   'False
-      Tab(0).Control(7)=   "txtCNPJInteressadoManif"
-      Tab(0).Control(7).Enabled=   0   'False
-      Tab(0).Control(8)=   "btnManif"
-      Tab(0).Control(8).Enabled=   0   'False
-      Tab(0).Control(9)=   "txtResultManif"
-      Tab(0).Control(9).Enabled=   0   'False
-      Tab(0).Control(10)=   "cbTpEventoManif"
-      Tab(0).Control(10).Enabled=   0   'False
-      Tab(0).Control(11)=   "cbTpAmbManif"
-      Tab(0).Control(11).Enabled=   0   'False
-      Tab(0).Control(12)=   "txtNumDocManif"
-      Tab(0).Control(12).Enabled=   0   'False
-      Tab(0).Control(13)=   "cbTpDocManif"
-      Tab(0).Control(13).Enabled=   0   'False
-      Tab(0).Control(14)=   "txtXJustManif"
-      Tab(0).Control(14).Enabled=   0   'False
-      Tab(0).Control(15)=   "txtCaminhoManif"
-      Tab(0).Control(15).Enabled=   0   'False
-      Tab(0).ControlCount=   16
-      TabCaption(1)   =   "Download Único"
-      TabPicture(1)   =   "frmDDFeAPI.frx":001C
-      Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "Label7"
-      Tab(1).Control(0).Enabled=   0   'False
-      Tab(1).Control(1)=   "Label8"
-      Tab(1).Control(1).Enabled=   0   'False
-      Tab(1).Control(2)=   "Label9"
-      Tab(1).Control(2).Enabled=   0   'False
-      Tab(1).Control(3)=   "Label10"
-      Tab(1).Control(3).Enabled=   0   'False
-      Tab(1).Control(4)=   "Label11"
-      Tab(1).Control(4).Enabled=   0   'False
-      Tab(1).Control(5)=   "Label12"
-      Tab(1).Control(5).Enabled=   0   'False
-      Tab(1).Control(6)=   "btnDownUnico"
-      Tab(1).Control(6).Enabled=   0   'False
-      Tab(1).Control(7)=   "txtResultUniq"
-      Tab(1).Control(7).Enabled=   0   'False
-      Tab(1).Control(8)=   "txtNumDocUniq"
-      Tab(1).Control(8).Enabled=   0   'False
-      Tab(1).Control(9)=   "txtCNPJIntUniq"
-      Tab(1).Control(9).Enabled=   0   'False
-      Tab(1).Control(10)=   "cbTpDocUniq"
-      Tab(1).Control(10).Enabled=   0   'False
-      Tab(1).Control(11)=   "cbTpAmbUniq"
-      Tab(1).Control(11).Enabled=   0   'False
-      Tab(1).Control(12)=   "cbModeloUniq"
-      Tab(1).Control(12).Enabled=   0   'False
-      Tab(1).Control(13)=   "chkApenasComXmlUniq"
-      Tab(1).Control(13).Enabled=   0   'False
-      Tab(1).Control(14)=   "chkComEventosUniq"
-      Tab(1).Control(14).Enabled=   0   'False
-      Tab(1).Control(15)=   "chkIncluirPdfUniq"
-      Tab(1).Control(15).Enabled=   0   'False
-      Tab(1).Control(16)=   "txtCaminhoUniq"
-      Tab(1).Control(16).Enabled=   0   'False
-      Tab(1).ControlCount=   17
-      TabCaption(2)   =   "Download Lote"
-      TabPicture(2)   =   "frmDDFeAPI.frx":0038
-      Tab(2).ControlEnabled=   -1  'True
-      Tab(2).Control(0)=   "Label14"
-      Tab(2).Control(0).Enabled=   0   'False
-      Tab(2).Control(1)=   "Label15"
-      Tab(2).Control(1).Enabled=   0   'False
-      Tab(2).Control(2)=   "Label16"
-      Tab(2).Control(2).Enabled=   0   'False
-      Tab(2).Control(3)=   "Label17"
-      Tab(2).Control(3).Enabled=   0   'False
-      Tab(2).Control(4)=   "lbUltNSU"
-      Tab(2).Control(4).Enabled=   0   'False
-      Tab(2).Control(5)=   "Label18"
-      Tab(2).Control(5).Enabled=   0   'False
-      Tab(2).Control(6)=   "Label19"
-      Tab(2).Control(6).Enabled=   0   'False
-      Tab(2).Control(7)=   "txtResultLote"
-      Tab(2).Control(7).Enabled=   0   'False
-      Tab(2).Control(8)=   "btnDownloadLote"
-      Tab(2).Control(8).Enabled=   0   'False
-      Tab(2).Control(9)=   "txtCaminhoLote"
-      Tab(2).Control(9).Enabled=   0   'False
-      Tab(2).Control(10)=   "txtCNPJIntLote"
-      Tab(2).Control(10).Enabled=   0   'False
-      Tab(2).Control(11)=   "cbTpAmbLote"
-      Tab(2).Control(11).Enabled=   0   'False
-      Tab(2).Control(12)=   "cbModeloLote"
-      Tab(2).Control(12).Enabled=   0   'False
-      Tab(2).Control(13)=   "txtUltNSULote"
-      Tab(2).Control(13).Enabled=   0   'False
-      Tab(2).Control(14)=   "chkIncluirPdfLote"
-      Tab(2).Control(14).Enabled=   0   'False
-      Tab(2).Control(15)=   "chkApenasComXmlLote"
-      Tab(2).Control(15).Enabled=   0   'False
-      Tab(2).Control(16)=   "chkComEventosLote"
-      Tab(2).Control(16).Enabled=   0   'False
-      Tab(2).Control(17)=   "chkApenasPendLote"
-      Tab(2).Control(17).Enabled=   0   'False
-      Tab(2).Control(18)=   "chkRetornoSimples"
-      Tab(2).Control(18).Enabled=   0   'False
-      Tab(2).ControlCount=   19
       Begin VB.TextBox txtCaminhoManif 
          Height          =   345
          Left            =   -74340
@@ -197,9 +77,9 @@ Begin VB.Form frmDDFeAPI
       End
       Begin VB.ComboBox cbModeloLote 
          Height          =   315
-         ItemData        =   "frmDDFeAPI.frx":0054
+         ItemData        =   "frmDDFeAPI.frx":0000
          Left            =   6120
-         List            =   "frmDDFeAPI.frx":0061
+         List            =   "frmDDFeAPI.frx":000D
          TabIndex        =   41
          Text            =   "55"
          Top             =   1320
@@ -217,6 +97,7 @@ Begin VB.Form frmDDFeAPI
          Height          =   285
          Left            =   840
          TabIndex        =   37
+         Text            =   "12378462000126"
          Top             =   1320
          Width           =   3135
       End
@@ -279,9 +160,9 @@ Begin VB.Form frmDDFeAPI
       End
       Begin VB.ComboBox cbModeloUniq 
          Height          =   315
-         ItemData        =   "frmDDFeAPI.frx":0071
+         ItemData        =   "frmDDFeAPI.frx":001D
          Left            =   -69120
-         List            =   "frmDDFeAPI.frx":007E
+         List            =   "frmDDFeAPI.frx":002A
          TabIndex        =   27
          Text            =   "55"
          Top             =   1440
@@ -297,9 +178,9 @@ Begin VB.Form frmDDFeAPI
       End
       Begin VB.ComboBox cbTpDocUniq 
          Height          =   315
-         ItemData        =   "frmDDFeAPI.frx":008E
+         ItemData        =   "frmDDFeAPI.frx":003A
          Left            =   -67920
-         List            =   "frmDDFeAPI.frx":0098
+         List            =   "frmDDFeAPI.frx":0044
          TabIndex        =   25
          Text            =   "nsu"
          Top             =   1080
@@ -337,9 +218,9 @@ Begin VB.Form frmDDFeAPI
       End
       Begin VB.ComboBox cbTpDocManif 
          Height          =   315
-         ItemData        =   "frmDDFeAPI.frx":00A8
+         ItemData        =   "frmDDFeAPI.frx":0054
          Left            =   -68520
-         List            =   "frmDDFeAPI.frx":00B2
+         List            =   "frmDDFeAPI.frx":005E
          TabIndex        =   13
          Text            =   "nsu"
          Top             =   960
@@ -354,9 +235,9 @@ Begin VB.Form frmDDFeAPI
       End
       Begin VB.ComboBox cbTpAmbManif 
          Height          =   315
-         ItemData        =   "frmDDFeAPI.frx":00C2
+         ItemData        =   "frmDDFeAPI.frx":006E
          Left            =   -74280
-         List            =   "frmDDFeAPI.frx":00C4
+         List            =   "frmDDFeAPI.frx":0070
          TabIndex        =   11
          Text            =   "2"
          Top             =   2520
@@ -364,9 +245,9 @@ Begin VB.Form frmDDFeAPI
       End
       Begin VB.ComboBox cbTpEventoManif 
          Height          =   315
-         ItemData        =   "frmDDFeAPI.frx":00C6
+         ItemData        =   "frmDDFeAPI.frx":0072
          Left            =   -74280
-         List            =   "frmDDFeAPI.frx":00D6
+         List            =   "frmDDFeAPI.frx":0082
          TabIndex        =   5
          Text            =   "210200"
          Top             =   3600
@@ -429,7 +310,7 @@ Begin VB.Form frmDDFeAPI
          Width           =   735
       End
       Begin VB.Label Label17 
-         Caption         =   "Numero do ultimo NSU baixado:"
+         Caption         =   "Numero do ultimo NSU Disponivel:"
          Height          =   255
          Left            =   3720
          TabIndex        =   46
