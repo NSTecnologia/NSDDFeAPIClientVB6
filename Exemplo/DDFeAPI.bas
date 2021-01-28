@@ -7,6 +7,7 @@ Public Declare Function ShellExecute Lib "shell32.dll" Alias "ShellExecuteA" (By
 Private Const tempoResposta = 500
 Private Const impressaoParam = """impressao"":{" & """tipo"":""pdf""," & """ecologica"":false," & """itemLinhas"":""1""," & """itemDesconto"":false," & """larguraPapel"":""80mm""}"
 Private Const token = "SEU_TOKEN"
+Private ultNSUConsulta As String
 
 'Esta fun���o envia um conte�do para uma URL, em requisi��es do tipo POST
 Function enviaConteudoParaAPI(conteudo As String, url As String, tpConteudo As String) As String
@@ -36,7 +37,7 @@ On Error GoTo SAI
         Case 401
             MsgBox ("Token n�o enviado ou inv�lido")
         Case 403
-            MsgBox ("Token sem permiss���o")
+            MsgBox ("Token sem permiss�o")
     End Select
     
     enviaConteudoParaAPI = resposta
@@ -273,11 +274,13 @@ Public Function tratamentoDownloadLote(caminho As String, modelo As String, incl
     Dim indice As Integer
     
     status = LerDadosJSON(jsonRetorno, "status", "", "")
+
     If (status = "200") Then
-        chRet = salvarDocsLote(caminho, modelo, incluirPdf, jsonRetorno)
+        chRet() = salvarDocsLote(caminho, modelo, incluirPdf, jsonRetorno)
+
         If (apenasComXml <> True) Then
-        
-            indice = -1
+            'Verifica se existe alguma chave em branco
+            indice = 0
             For i = 0 To UBound(chRet)
                 If (IsNumeric(chRet(i))) Then
                     indice = indice + 1
@@ -286,6 +289,7 @@ Public Function tratamentoDownloadLote(caminho As String, modelo As String, incl
             
             ReDim chaves(indice)
             
+            'Preenche o novo array de chaves
             indice = 0
             For i = 0 To UBound(chRet)
                 If (IsNumeric(chRet(i))) Then
@@ -293,12 +297,17 @@ Public Function tratamentoDownloadLote(caminho As String, modelo As String, incl
                     indice = indice + 1
                 End If
             Next
+        Else
+            chaves = chRet
         End If
+
         ultNSU = LerDadosJSON(jsonRetorno, "ultNSU", "", "")
+
         frmDDFeAPI.lbUltNSU.Caption = ultNSU
         json = "{"
         json = json & """status"":""" & status & ""","
         json = json & """ultNSU"":""" & ultNSU & ""","
+        json = json & """ultNSUConsulta"":""" & ultNSUConsulta & ""","
         json = json & """chaves"":["
         
         For i = 0 To UBound(chaves)
@@ -324,41 +333,57 @@ End Function
 Public Function salvarDocsLote(caminho As String, modelo As String, incluirPdf As Boolean, jsonRetorno As String) As String()
     Dim xml As String
     Dim pdf As String
+    Dim nodo As String
     Dim tpEvento As String
     Dim xmls() As String
+    Dim auxXmls As String
+    Dim xmlsReal As String
+    Dim xmlNodes() As String
     Dim chaves() As String
     Dim aux() As String
-    Dim ultimoIndice, tamanhoXML As Integer
+    Dim quantidadeXMLs, ultimoIndice, tamanhoXML As Integer
     
-    xmls = Split(jsonRetorno, "},")
-    ultimoIndice = UBound(xmls)
+    xmls = Split(jsonRetorno, """xmls"":[")
+    auxXmls = xmls(1)
+    aux = Split(auxXmls, "]}")
+    xmlsReal = aux(0)
+    gravaLinhaLog ("[XML REAL]")
+    gravaLinhaLog (xmlsReal)
+    xmlsNodes = Split(xmlsReal, "},")
+    ultimoIndice = UBound(xmlsNodes)
     ReDim chaves(ultimoIndice)
-    aux = Split(xmls(0), "[")
-    xmls(0) = aux(1)
-    tamanhoXML = Len(xmls(ultimoIndice))
-    xmls(ultimoIndice) = Mid(xmls(ultimoIndice), 1, tamanhoXML - 3)
-    tpEvento = ""
-    
     
     For i = 0 To ultimoIndice
-    xmls(i) = xmls(i) + "}"
-    xml = LerDadosJSON(xmls(i), "xml", "", "")
-    If (xml = "") Or (xml = vbNullString) Or (Len(xml) = 0) Then
-        GoTo CNT
-    End If
-    chaves(i) = LerDadosJSON(xmls(i), "chave", "", "")
-        If (InStr(1, xmls(i), "tpEvento")) Then
-            tpEvento = LerDadosJSON(xmls(i), "tpEvento", "", "")
+        
+        If (i = ultimoIndice) Then
+            nodo = xmlsNodes(i)
+            ultNSUConsulta = LerDadosJSON(nodo, "nsu", "", "")
+        Else
+            nodo = xmlsNodes(i) + "}"
+        End If
+                
+        xml = LerDadosJSON(nodo, "xml", "", "")
+        
+        'Se o XML estiver vazio, passa para o proximo registro
+        If (xml = "") Or (xml = vbNullString) Or (Len(xml) = 0) Then
+            GoTo CNT
+        End If
+        
+        chaves(i) = LerDadosJSON(nodo, "chave", "", "")
+        
+        'Verifica se o objeto eh um XML de DFe ou de um Evento
+        If (InStr(1, nodo, "tpEvento")) Then
+            tpEvento = LerDadosJSON(nodo, "tpEvento", "", "")
         Else
             If (incluirPdf = True) Then
-                pdf = LerDadosJSON(xmls(i), "pdf", "", "")
+                pdf = LerDadosJSON(nodo, "pdf", "", "")
                 Call salvarPDF(pdf, caminho, chaves(i), modelo)
             End If
             tpEvento = ""
         End If
         Call salvarXML(xml, caminho, chaves(i), modelo, tpEvento)
-CNT: Next
-
+CNT:     Next
+    
     salvarDocsLote = chaves
 End Function
 
