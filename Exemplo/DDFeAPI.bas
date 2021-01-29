@@ -174,8 +174,8 @@ Public Sub salvarDocUnico(caminho As String, incluirPdf As Boolean, jsonRetorno 
     Dim tpEvento As String
     Dim xmls() As String
     Dim aux() As String
-    Dim ultimoIndice, tamanhoXML As Integer
-    Dim i As Integer
+    Dim ultimoIndice, tamanhoXML As Long
+    Dim i As Long
     
     listaDocs = LerDadosJSON(jsonRetorno, "listaDocs", "", "")
     If (listaDocs = False) Then
@@ -221,11 +221,11 @@ CNT:  Next
 End Sub
 
 'Esta fun��o realiza o download uem lote de DF-es
-Public Function downloadLote(caminho As String, CNPJInteressado As String, tpAmb As String, modelo As String, ultNSU As Integer, Optional incluirPdf As Boolean = False, Optional apenasComXml As Boolean = False, Optional comEventos As Boolean = False, Optional apenasPendManif As Boolean = False, Optional retornoSimples As Boolean = False) As String
+Public Function downloadLote(caminho As String, CNPJInteressado As String, tpAmb As String, modelo As String, ultNSU As Long, Optional incluirPdf As Boolean = False, Optional apenasComXml As Boolean = False, Optional comEventos As Boolean = False, Optional apenasPendManif As Boolean = False, Optional retornoSimples As Boolean = False) As String
     Dim json As String
     Dim url As String
     Dim resposta As String
-    Dim retorno
+    Dim retorno As String
 
     'Monta o JSON
     json = "{"
@@ -271,7 +271,7 @@ Public Function tratamentoDownloadLote(caminho As String, modelo As String, incl
     Dim chaves() As String
     Dim json As String
     Dim ultNSU As String
-    Dim indice As Integer
+    Dim indice As Long
     Dim consNSU As String
     
     status = LerDadosJSON(jsonRetorno, "status", "", "")
@@ -348,7 +348,7 @@ Public Function salvarDocsLote(caminho As String, modelo As String, incluirPdf A
     Dim xmlNodes() As String
     Dim chaves() As String
     Dim aux() As String
-    Dim quantidadeXMLs, ultimoIndice, tamanhoXML As Integer
+    Dim quantidadeXMLs, ultimoIndice, tamanhoXML As Long
     
     xmls = Split(jsonRetorno, """xmls"":[")
     auxXmls = xmls(1)
