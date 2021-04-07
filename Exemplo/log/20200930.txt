@@ -1,5 +1,0 @@
-30/09/2020 15:19:35 - [DOWNLOAD_LOTE_DADOS]
-30/09/2020 15:19:35 - {"CNPJInteressado":"12378462000126","tpAmb":"1","ultNSU":1850,"modelo":"55","incluirPDF":" false","apenasComXml":" true","comEventos":" false"}
-30/09/2020 15:19:49 - [DOWNLOAD_LOTE_RESPOSTA]
-30/09/2020 15:19:49 - {"status":"-2147012889","motivo":"The server name or address could not be resolved
-"}
