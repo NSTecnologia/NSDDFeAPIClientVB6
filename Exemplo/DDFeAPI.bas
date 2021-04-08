@@ -9,7 +9,7 @@ Private Const impressaoParam = """impressao"":{" & """tipo"":""pdf""," & """ecol
 Private Const token = "SEU_TOKEN_AQUI"
 Private ultNSUConsulta As String
 
-'Esta fun���o envia um conte�do para uma URL, em requisi��es do tipo POST
+'Esta funcaoo envia um conteudo para uma URL, em requisicoes do tipo POST
 Function enviaConteudoParaAPI(conteudo As String, url As String, tpConteudo As String) As String
 On Error GoTo SAI
     Dim contentType As String
@@ -35,9 +35,9 @@ On Error GoTo SAI
     
     Select Case obj.status
         Case 401
-            MsgBox ("Token n�o enviado ou inv�lido")
+            MsgBox ("Token nao enviado ou invalido")
         Case 403
-            MsgBox ("Token sem permiss�o")
+            MsgBox ("Token sem permissao")
     End Select
     
     enviaConteudoParaAPI = resposta
@@ -46,7 +46,7 @@ SAI:
   enviaConteudoParaAPI = "{" & """status"":""" & Err.Number & """," & """motivo"":""" & Err.Description & """" & "}"
 End Function
 
-'Esta fun��o realiza o processo de Manifesta��o de um DF-e
+'Esta funcao realiza o processo de Manifestacao de um DF-e
 Public Function manifestacao(caminho As String, CNPJInteressado As String, tpEvento As String, tpAmb As String, nsu As String, Optional chave As String = "", Optional xJust As String = "") As String
     Dim retorno As String
     Dim json As String
@@ -71,11 +71,11 @@ Public Function manifestacao(caminho As String, CNPJInteressado As String, tpEve
     
     url = "https://ddfe.ns.eti.br/events/manif"
     
-    gravaLinhaLog ("[MANIFESTA��O_DADOS]")
+    gravaLinhaLog ("[MANIFESTACAO_DADOS]")
     gravaLinhaLog (json)
     
     retorno = enviaConteudoParaAPI(json, url, "json")
-    gravaLinhaLog ("[MANIFESTA��O_RESPOSTA]")
+    gravaLinhaLog ("[MANIFESTACAO_RESPOSTA]")
     gravaLinhaLog (retorno)
     
     Call tratamentoManifestacao(retorno, tpEvento, chave, caminho)
@@ -83,7 +83,7 @@ Public Function manifestacao(caminho As String, CNPJInteressado As String, tpEve
     manifestacao = retorno
 End Function
 
-'Esta fun��o realiza tratamento de retorno da API na Manifesta��o
+'Esta funcao realiza tratamento de retorno da API na Manifestacao
 Public Sub tratamentoManifestacao(jsonRetorno As String, tpEvento As String, chave As String, caminho As String)
 
     Dim status As String
@@ -103,7 +103,7 @@ Public Sub tratamentoManifestacao(jsonRetorno As String, tpEvento As String, cha
 
 End Sub
 
-'Esta fun��o salva o xml da Manifesta��o
+'Esta funcao salva o xml da Manifestacao
 Public Sub salvarDocManifestacao(jsonRetorno As String, tpEvento As String, chave As String, caminho As String)
 
     Dim xml As String
@@ -112,7 +112,7 @@ Public Sub salvarDocManifestacao(jsonRetorno As String, tpEvento As String, chav
 
 End Sub
 
-'Esta fun��o realiza o download unico de DF-es
+'Esta funcao realiza o download unico de DF-es
 Public Function downloadUnico(caminho As String, CNPJInteressado As String, tpAmb As String, modelo As String, nsu As String, Optional chave As String = "", Optional incluirPdf As Boolean = False, Optional apenasComXml As Boolean = False, Optional comEventos As Boolean = False) As String
     Dim url As String
     Dim resposta As String
@@ -150,7 +150,7 @@ Public Function downloadUnico(caminho As String, CNPJInteressado As String, tpAm
 End Function
 
 
-'Esta fun��o realiza o tratamento de retorno da API no Download Unico
+'Esta funcao realiza o tratamento de retorno da API no Download Unico
 Public Sub tratamenroDownloadUnico(caminho As String, incluirPdf As Boolean, jsonRetorno As String)
     Dim status As String
     
@@ -164,7 +164,7 @@ Public Sub tratamenroDownloadUnico(caminho As String, incluirPdf As Boolean, jso
     End If
 End Sub
 
-'Esta fun��o salva um xml e/ou pdf do documento baixado
+'Esta funcao salva um xml e/ou pdf do documento baixado
 Public Sub salvarDocUnico(caminho As String, incluirPdf As Boolean, jsonRetorno As String)
     Dim listaDocs As String
     Dim xml As String
@@ -220,7 +220,7 @@ CNT:  Next
     End If
 End Sub
 
-'Esta fun��o realiza o download uem lote de DF-es
+'Esta funcao realiza o download uem lote de DF-es
 Public Function downloadLote(caminho As String, CNPJInteressado As String, tpAmb As String, modelo As String, ultNSU As Long, Optional incluirPdf As Boolean = False, Optional apenasComXml As Boolean = False, Optional comEventos As Boolean = False, Optional apenasPendManif As Boolean = False, Optional retornoSimples As Boolean = False) As String
     Dim json As String
     Dim url As String
@@ -264,7 +264,7 @@ Public Function downloadLote(caminho As String, CNPJInteressado As String, tpAmb
     downloadLote = resposta
 End Function
 
-'Esta fun��oo realiza o tratamento de retorno da API do Download Em Lote
+'Esta funcaoo realiza o tratamento de retorno da API do Download Em Lote
 Public Function tratamentoDownloadLote(caminho As String, modelo As String, incluirPdf As Boolean, jsonRetorno As String, apenasComXml As Boolean) As String
     Dim status As String
     Dim chRet() As String
@@ -336,7 +336,7 @@ Public Function tratamentoDownloadLote(caminho As String, modelo As String, incl
     
 End Function
 
-'Esta fun��o salva xmls e/ou pdfs dos documentos baixados no download em lote
+'Esta funcao salva xmls e/ou pdfs dos documentos baixados no download em lote
 Public Function salvarDocsLote(caminho As String, modelo As String, incluirPdf As Boolean, jsonRetorno As String) As String()
     Dim xml As String
     Dim pdf As String
@@ -394,7 +394,7 @@ CNT:     Next
     salvarDocsLote = chaves
 End Function
 
-'Esta fun��o salva um XML
+'Esta funcao salva um XML
 Public Sub salvarXML(xml As String, caminho As String, chave As String, modelo As String, Optional tpEvento As String = "")
     Dim fsT As Object
     Set fsT = CreateObject("ADODB.Stream")
@@ -429,7 +429,7 @@ Public Sub salvarXML(xml As String, caminho As String, chave As String, modelo A
     fsT.SaveToFile localParaSalvar, 2
 End Sub
 
-'Esta fun��o salva um PDF
+'Esta funcao salva um PDF
 Public Function salvarPDF(pdf As String, caminho As String, chave As String, modelo As String, Optional tpEvento As String = "") As Boolean
 On Error GoTo SAI
     Dim conteudoSalvar  As String
@@ -444,7 +444,7 @@ On Error GoTo SAI
         extensao = "-procNFSe.pdf"
     End If
 
-    'Seta o caminho para o arquivo PDF
+    'Atribui o caminho para o arquivo PDF
     localParaSalvar = caminho & tpEvento & chave & extensao
 
     Dim fnum
@@ -457,7 +457,7 @@ SAI:
     MsgBox (Err.Number & " - " & Err.Description), vbCritical
 End Function
 
-'Esta fun��o l� os dados de um JSON
+'Esta funcao le os dados de um JSON
 Public Function LerDadosJSON(sJsonString As String, key1 As String, key2 As String, key3 As String, Optional key4 As String, Optional key5 As String) As String
 On Error GoTo err_handler
     Dim oScriptEngine As ScriptControl
@@ -483,7 +483,7 @@ err_handler:
     Resume Err_Exit
 End Function
 
-'Esta fun��o l� os dados de um XML
+'Esta funcao le os dados de um XML
 Public Function LerDadosXML(sXml As String, key1 As String, key2 As String) As String
     On Error Resume Next
     LerDadosXML = ""
@@ -503,18 +503,18 @@ Public Function LerDadosXML(sXml As String, key1 As String, key2 As String) As S
             LerDadosXML = valor
         End If
         Else
-        MsgBox "N�o foi poss�vel ler o conte�do do XML da NFe especificado para leitura.", vbCritical, "ERRO"
+        MsgBox ("Nao foi possivel ler o conteudo do XML da NFe especificado para leitura.", vbCritical, "ERRO")
     End If
 End Function
 
-'Esta fun��o grava uma linha de texto em um arquivo de log
+'Esta funcao grava uma linha de texto em um arquivo de log
 Public Sub gravaLinhaLog(conteudoSalvar As String)
     Dim fsT As Object
     Set fsT = CreateObject("ADODB.Stream")
     Dim localParaSalvar As String
     Dim data As String
     
-    'Diret�rio para salvar os logs
+    'Diretorio para salvar os logs
     localParaSalvar = App.Path & "\log\"
     
     'Checa se existe o caminho passado para salvar os arquivos
@@ -525,7 +525,7 @@ Public Sub gravaLinhaLog(conteudoSalvar As String)
     'Pega data atual
     data = Format(Date, "yyyyMMdd")
     
-    'Diret�rio + nome do arquivo para salvar os logs
+    'Diretorio + nome do arquivo para salvar os logs
     localParaSalvar = App.Path & "\log\" & data & ".txt"
     
     'Pega data e hora atual
